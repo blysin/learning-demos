@@ -19,11 +19,14 @@ import io.netty.handler.timeout.IdleStateHandler;
  * @since:
  */
 public class ServerInitializer extends ChannelInitializer<SocketChannel> {
+
+    //private final AcceptorIdleStateTrigger idleStateTrigger = new AcceptorIdleStateTrigger();
+
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         //管道注册handler
         ChannelPipeline pipeline = socketChannel.pipeline();
-        pipeline.addLast(new IdleStateHandler(3, 4, 10));
+        pipeline.addLast(new IdleStateHandler(5, 0, 0));
         // 基于换行符号
         pipeline.addLast(new LineBasedFrameDecoder(1024));
         //编码通道处理

@@ -1,42 +1,51 @@
-package com.blysin.demo.netty.spring.client;
+package com.blysin.demo.netty.spring.heartbeat;
 
-import io.netty.channel.ChannelHandler;
+
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
+import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * descripiton: 客户端逻辑处理
- *
- * @author: www.iknowba.cn
- * @date: 2018/3/23
- * @time: 16:50
- * @modifier:
- * @since:
+ * @author daishaokun
+ * @date 2019-09-11
  */
+@Sharable
 @Slf4j
-@ChannelHandler.Sharable
-public class ClientHandler extends SimpleChannelInboundHandler<String> {
-    @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String s) throws Exception {
-        // TODO 获取客户端返回的数据
-        log.info("收到服务端消息：" + s);
-    }
+public class HeartBeatClientHandler extends SimpleChannelInboundHandler<String> {
 
-    /**
-     * 当客户端主动链接服务端的链接后，这个通道就是活跃的了。也就是客户端与服务端建立了通信通道并且可以传输数据
-     */
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        log.info("连接服务端成功");
+        ctx.fireChannelActive();
+
         // TODO 客户端连接建立成功，需要发送鉴权信息，10秒钟内如果没有发送鉴权信息连接可能会被中断
-        String str = "auth1:2013\r\n";
+        String str = "auth:2013\r\n";
         ctx.writeAndFlush(str);
     }
 
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        log.info("socket连接断开");
+    }
+
+    @Override
+    protected void channelRead0(ChannelHandlerContext ctx, String message) throws Exception {
+        // TODO 处理客户端返回的数据
+        log.info("收到服务端消息：" + message);
+        if ("Heartbeat".equals(message)) {
+            ctx.write("has read message from server");
+            ctx.flush();
+        }
+        ReferenceCountUtil.release(message);
+    }
+
     /**
-     * 抓住异常，当发生异常的时候，可以做一些相应的处理，比如打印日志、关闭链接
+     * 发生异常的时候，可以做一些相应的处理，比如打印日志、关闭链接
      */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {

@@ -97,9 +97,10 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         Channel channel = ctx.channel();
         boolean active = channel.isActive();
         if (active) {
-            System.out.println("[" + channel.remoteAddress() + "] is online");
+            // TODO 车场状态改成在线
+            System.out.println("channelActive[" + channel.remoteAddress() + "] is online");
         } else {
-            System.out.println("[" + channel.remoteAddress() + "] is offline");
+            System.out.println("channelActive[" + channel.remoteAddress() + "] is offline");
         }
         ctx.writeAndFlush("[server]: welcome\n");
     }
@@ -114,9 +115,10 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
         if (!channel.isActive()) {
-            System.out.println("[" + channel.remoteAddress() + "] is offline");
+            // TODO 车场状态改成离线
+            System.out.println("channelInactive[" + channel.remoteAddress() + "] is offline");
         } else {
-            System.out.println("[" + channel.remoteAddress() + "] is online");
+            System.out.println("channelInactive[" + channel.remoteAddress() + "] is online");
         }
     }
 
@@ -134,6 +136,13 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         ctx.close().sync();
     }
 
+    /**
+     * 时间触发器，用于处理10秒内没有心跳的连接
+     *
+     * @param ctx
+     * @param evt
+     * @throws Exception
+     */
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         super.userEventTriggered(ctx, evt);
@@ -141,7 +150,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             IdleStateEvent e = (IdleStateEvent) evt;
             if (e.state() == IdleState.READER_IDLE) {
                 if (parkId == null) {
-                    ctx.writeAndFlush("无鉴权消息，连接中断！\r\n");
+                    ctx.writeAndFlush("无心跳，连接中断！\r\n");
                     ctx.flush();
                     ctx.close();
                 }

@@ -10,6 +10,8 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -53,9 +55,13 @@ public class NettyServer {
         bootstrap.childHandler(new ServerInitializer());
         //BACKLOG用于构造服务端套接字ServerSocket对象，
         // 标识当服务器请求处理线程全满时，用于临时存放已完成三次握手的请求的队列的最大长度
-        bootstrap.option(ChannelOption.SO_BACKLOG, 1024);
+        bootstrap.option(ChannelOption.SO_BACKLOG, 1024).childOption(ChannelOption.SO_KEEPALIVE, true);
+
         //是否启用心跳保活机制
         bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
+        bootstrap.handler(new LoggingHandler(LogLevel.INFO));
+        // 下面这行什么作用？
+        bootstrap.localAddress(address);
 
 
         ChannelFuture channelFuture = null;
