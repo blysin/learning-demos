@@ -1,6 +1,5 @@
 package com.blysin.demo.netty;
-import com.blysin.demo.netty.socket.NettyServer;
-import com.blysin.demo.netty.socket.ServerHandler;
+import com.blysin.demo.netty.socket.ChatNettyServer;
 import org.junit.Test;
 
 /**
@@ -11,7 +10,7 @@ public class SocketServerTest {
     @Test
     public void start() {
         System.out.println("服务端启动！");
-        new NettyServer().bind(8988);
+        new ChatNettyServer().bind(8988);
     }
 
 }

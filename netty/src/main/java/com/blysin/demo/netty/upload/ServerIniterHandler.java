@@ -1,11 +1,13 @@
-package com.blysin.demo.netty.netty;
+package com.blysin.demo.netty.upload;
 
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+
 /**
  * descripiton: 服务器初始化
  *
@@ -20,6 +22,8 @@ public class ServerIniterHandler extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         //管道注册handler
         ChannelPipeline pipeline = socketChannel.pipeline();
+        // 基于换行符号
+        pipeline.addLast(new LineBasedFrameDecoder(1024));
         //编码通道处理
         pipeline.addLast("decode", new StringDecoder());
         //转码通道处理

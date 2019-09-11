@@ -1,30 +1,30 @@
-package com.blysin.demo.netty.netty;
+package com.blysin.demo.netty.chat;
 
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.http.HttpClientCodec;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
-
 /**
- * descripiton: 客户端处理初始化
+ * descripiton: 服务器初始化
  *
  * @author: www.iknowba.cn
  * @date: 2018/3/23
- * @time: 16:55
+ * @time: 15:46
  * @modifier:
  * @since:
  */
-public class ClientIniterHandler extends ChannelInitializer<SocketChannel> {
+public class ServerIniterHandler extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
-        //注册管道
+        //管道注册handler
         ChannelPipeline pipeline = socketChannel.pipeline();
-        pipeline.addLast("decoder", new StringDecoder());
-        pipeline.addLast("encoder", new StringEncoder());
-        pipeline.addLast("http", new HttpClientCodec());
-        pipeline.addLast("chat", new ClientHandler());
+        //编码通道处理
+        pipeline.addLast("decode", new StringDecoder());
+        //转码通道处理
+        pipeline.addLast("encode", new StringEncoder());
+        //聊天服务通道处理
+        pipeline.addLast("chat", new ServerHandler());
     }
 }

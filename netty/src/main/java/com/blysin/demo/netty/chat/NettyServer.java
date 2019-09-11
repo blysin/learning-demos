@@ -1,4 +1,4 @@
-package com.blysin.demo.netty.netty;
+package com.blysin.demo.netty.chat;
 
 
 import io.netty.bootstrap.ServerBootstrap;

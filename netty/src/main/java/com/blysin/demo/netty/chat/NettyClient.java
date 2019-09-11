@@ -1,4 +1,4 @@
-package com.blysin.demo.netty.netty;
+package com.blysin.demo.netty.chat;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -46,14 +46,16 @@ public class NettyClient {
         try {
             //连接服务
             Channel channel = bootstrap.connect(ip, port).sync().channel();
-            while (true) {
-                //向服务端发送内容
-                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                String content = reader.readLine();
-                if (!StringUtils.isEmpty(content)) {
-                    channel.writeAndFlush(content);
-                }
-            }
+            //while (true) {
+            //    //向服务端发送内容
+            //    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            //    String content = reader.readLine();
+            //    if (!StringUtils.isEmpty(content)) {
+            //        channel.writeAndFlush(content);
+            //    }
+            //}
+
+            channel.closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

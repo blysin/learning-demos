@@ -1,12 +1,14 @@
-package com.blysin.demo.netty.netty;
+package com.blysin.demo.netty.spring.server;
 
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.channel.group.ChannelGroup;
-import io.netty.channel.group.DefaultChannelGroup;
-import io.netty.util.concurrent.GlobalEventExecutor;
+import io.netty.handler.timeout.IdleState;
+import io.netty.handler.timeout.IdleStateEvent;
+import lombok.extern.slf4j.Slf4j;
+
+import static com.blysin.demo.netty.spring.server.NettyServer.GROUP;
 
 /**
  * descripiton: 服务器的处理逻辑
@@ -17,33 +19,37 @@ import io.netty.util.concurrent.GlobalEventExecutor;
  * @modifier:
  * @since:
  */
+@Slf4j
 public class ServerHandler extends SimpleChannelInboundHandler<String> {
-
-    /**
-     * 所有的活动用户
-     */
-    public static final ChannelGroup group = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    private Integer parkId;
 
     /**
      * 读取消息通道
      *
      * @param context
-     * @param s
+     * @param msg
      * @throws Exception
      */
     @Override
-    protected void channelRead0(ChannelHandlerContext context, String s)
-            throws Exception {
+    protected void channelRead0(ChannelHandlerContext context, String msg) throws Exception {
         Channel channel = context.channel();
-        //当有用户发送消息的时候，对其他的用户发送消息
-        for (Channel ch : group) {
-            if (ch == channel) {
-                ch.writeAndFlush("[you]: " + s + "\n");
-            } else {
-                ch.writeAndFlush("[" + channel.remoteAddress() + "]: " + s + "\n");
+
+        if (msg.startsWith("auth:")) {
+            String auth = msg.substring(5);
+            parkId = Integer.parseInt(auth);
+            channel.writeAndFlush("[you]: 鉴权成功，你好，车场：" + parkId + "\n");
+        } else {
+            //当有用户发送消息的时候，对其他的用户发送消息
+            for (Channel ch : GROUP) {
+                if (ch == channel) {
+                    ch.writeAndFlush("[you]: " + msg + "\n");
+                } else {
+                    ch.writeAndFlush("[" + channel.remoteAddress() + "]: " + msg + "\n");
+                }
             }
         }
-        System.out.println("[" + channel.remoteAddress() + "]: " + s + "\n");
+
+        log.info("[" + channel.remoteAddress() + "]: " + msg + "\n");
     }
 
     /**
@@ -55,12 +61,12 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
-        for (Channel ch : group) {
+        for (Channel ch : GROUP) {
             if (ch == channel) {
                 ch.writeAndFlush("[" + channel.remoteAddress() + "] coming");
             }
         }
-        group.add(channel);
+        GROUP.add(channel);
     }
 
     /**
@@ -72,12 +78,12 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
-        for (Channel ch : group) {
+        for (Channel ch : GROUP) {
             if (ch == channel) {
                 ch.writeAndFlush("[" + channel.remoteAddress() + "] leaving");
             }
         }
-        group.remove(channel);
+        GROUP.remove(channel);
     }
 
     /**
@@ -95,7 +101,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         } else {
             System.out.println("[" + channel.remoteAddress() + "] is offline");
         }
-        ctx.writeAndFlush("[server]: welcome");
+        ctx.writeAndFlush("[server]: welcome\n");
     }
 
     /**
@@ -128,4 +134,19 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         ctx.close().sync();
     }
 
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        super.userEventTriggered(ctx, evt);
+        if (evt instanceof IdleStateEvent) {
+            IdleStateEvent e = (IdleStateEvent) evt;
+            if (e.state() == IdleState.READER_IDLE) {
+                if (parkId == null) {
+                    ctx.writeAndFlush("无鉴权消息，连接中断！\r\n");
+                    ctx.flush();
+                    ctx.close();
+                }
+            }
+        }
+
+    }
 }

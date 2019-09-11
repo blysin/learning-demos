@@ -20,7 +20,7 @@ import java.util.logging.SocketHandler;
  */
 @Component
 @Slf4j
-public class NettyServer {
+public class ChatNettyServer {
 
     public void bind(int port) {
         //Reactor线程组

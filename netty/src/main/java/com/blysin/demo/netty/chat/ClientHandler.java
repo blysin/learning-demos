@@ -1,4 +1,4 @@
-package com.blysin.demo.netty.netty;
+package com.blysin.demo.netty.chat;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
