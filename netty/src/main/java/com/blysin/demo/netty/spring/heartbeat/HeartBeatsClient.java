@@ -36,7 +36,7 @@ public class HeartBeatsClient {
             @Override
             public ChannelHandler[] handlers() {
                 return new ChannelHandler[]{this,
-                        new IdleStateHandler(0, 4, 0, TimeUnit.SECONDS),
+                        new IdleStateHandler(0, 5, 0, TimeUnit.SECONDS),
                         new StringDecoder(),
                         new StringEncoder(),
                         new HeartBeatClientHandler()};

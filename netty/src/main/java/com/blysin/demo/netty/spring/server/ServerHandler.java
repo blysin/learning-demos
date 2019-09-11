@@ -149,11 +149,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         if (evt instanceof IdleStateEvent) {
             IdleStateEvent e = (IdleStateEvent) evt;
             if (e.state() == IdleState.READER_IDLE) {
-                if (parkId == null) {
-                    ctx.writeAndFlush("无心跳，连接中断！\r\n");
-                    ctx.flush();
-                    ctx.close();
-                }
+                ctx.writeAndFlush("无心跳，连接中断！\r\n");
+                ctx.flush();
+                ctx.close();
             }
         }
 
