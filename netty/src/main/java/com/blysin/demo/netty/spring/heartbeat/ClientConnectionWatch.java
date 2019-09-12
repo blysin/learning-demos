@@ -1,7 +1,6 @@
 package com.blysin.demo.netty.spring.heartbeat;
 
 
-import com.blysin.demo.netty.spring.client.ChannelHandlerHolder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -35,6 +34,7 @@ public abstract class ClientConnectionWatch extends ChannelInboundHandlerAdapter
     private volatile boolean reconnect = true;
     private int attempts;
 
+    private Channel channel;
 
     public ClientConnectionWatch(Bootstrap bootstrap, Timer timer, int port, String host, boolean reconnect) {
         this.bootstrap = bootstrap;
@@ -78,7 +78,6 @@ public abstract class ClientConnectionWatch extends ChannelInboundHandlerAdapter
 
     @Override
     public void run(Timeout timeout) throws Exception {
-
         ChannelFuture future;
         //bootstrap已经初始化好了，只需要将handler填入就可以了
         synchronized (LOCK) {
@@ -102,9 +101,17 @@ public abstract class ClientConnectionWatch extends ChannelInboundHandlerAdapter
                 f.channel().pipeline().fireChannelInactive();
             } else {
                 log.info("重连成功");
+                this.channel = future.channel();
             }
         });
 
     }
 
+    public Channel getChannel() {
+        return channel;
+    }
+
+    public void setChannel(Channel channel) {
+        this.channel = channel;
+    }
 }

@@ -1,13 +1,18 @@
 package com.blysin.demo.netty.spring.server;
 
 
+import com.blysin.demo.netty.service.MessageService;
+import com.blysin.demo.netty.util.SocketMessageUtils;
+import com.blysin.demo.netty.util.SpringBootBeanUtils;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
+import static com.blysin.demo.netty.spring.server.NettyServer.CLIENTS;
 import static com.blysin.demo.netty.spring.server.NettyServer.GROUP;
 
 /**
@@ -35,21 +40,25 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         Channel channel = context.channel();
 
         if (msg.startsWith("auth:")) {
+            log.info("鉴权请求");
+
             String auth = msg.substring(5);
             parkId = Integer.parseInt(auth);
+            CLIENTS.put(parkId, channel);
             channel.writeAndFlush("[you]: 鉴权成功，你好，车场：" + parkId + "\n");
+        }else if ("heartbeat".equalsIgnoreCase(msg)) {
+            // 心跳不做处理
         } else {
-            //当有用户发送消息的时候，对其他的用户发送消息
-            for (Channel ch : GROUP) {
-                if (ch == channel) {
-                    ch.writeAndFlush("[you]: " + msg + "\n");
-                } else {
-                    ch.writeAndFlush("[" + channel.remoteAddress() + "]: " + msg + "\n");
+            MessageService service = SpringBootBeanUtils.getBean(MessageService.class);
+            if (service == null) {
+                log.error("无法注入service对象");
+            } else {
+                String result = service.handleMessage(msg);
+                if (StringUtils.isNotEmpty(result)) {
+                    channel.writeAndFlush(SocketMessageUtils.buildMsg(result));
                 }
             }
         }
-
-        log.info("[" + channel.remoteAddress() + "]: " + msg + "\n");
     }
 
     /**
@@ -98,9 +107,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         boolean active = channel.isActive();
         if (active) {
             // TODO 车场状态改成在线
-            System.out.println("channelActive[" + channel.remoteAddress() + "] is online");
+            log.info("channelActive[" + channel.remoteAddress() + "] is online,当前连接数：{}", GROUP.size());
         } else {
-            System.out.println("channelActive[" + channel.remoteAddress() + "] is offline");
+            log.info("channelActive[" + channel.remoteAddress() + "] is offline");
         }
         ctx.writeAndFlush("[server]: welcome\n");
     }
@@ -116,9 +125,12 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         Channel channel = ctx.channel();
         if (!channel.isActive()) {
             // TODO 车场状态改成离线
-            System.out.println("channelInactive[" + channel.remoteAddress() + "] is offline");
+            log.info("channelInactive [" + channel.remoteAddress() + "] 车场：{} is offline,当前连接数：{}", parkId, GROUP.size());
+            if (parkId != null) {
+                CLIENTS.remove(parkId);
+            }
         } else {
-            System.out.println("channelInactive[" + channel.remoteAddress() + "] is online");
+            log.info("channelInactive[" + channel.remoteAddress() + "] is online");
         }
     }
 
@@ -132,7 +144,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable e) throws Exception {
         Channel channel = ctx.channel();
-        System.out.println("[" + channel.remoteAddress() + "] leave the room");
+        log.info("[" + channel.remoteAddress() + "] leave the room");
         ctx.close().sync();
     }
 

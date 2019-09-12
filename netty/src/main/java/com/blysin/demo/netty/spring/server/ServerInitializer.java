@@ -8,6 +8,7 @@ import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
+import org.springframework.stereotype.Component;
 
 /**
  * descripiton: 服务器初始化
@@ -26,9 +27,9 @@ public class ServerInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         //管道注册handler
         ChannelPipeline pipeline = socketChannel.pipeline();
-        pipeline.addLast(new IdleStateHandler(5, 0, 0));
-        // 基于换行符号
-        pipeline.addLast(new LineBasedFrameDecoder(1024));
+        pipeline.addLast(new IdleStateHandler(11, 0, 0));
+        // 基于换行符号,单次数据量不超过10KB
+        pipeline.addLast(new LineBasedFrameDecoder(10240));
         //编码通道处理
         pipeline.addLast("decode", new StringDecoder());
         //转码通道处理

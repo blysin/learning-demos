@@ -1,0 +1,15 @@
+GET http://localhost:8080/netty/server/group?msg=群发消息
+Accept: */*
+Cache-Control: no-cache
+
+###
+GET http://localhost:8080/netty/server/485588?msg=定向发送消息485588
+Accept: */*
+Cache-Control: no-cache
+
+###
+GET http://localhost:8080/netty/client/send?msg=向服务端发送消息
+Accept: */*
+Cache-Control: no-cache
+
+###

@@ -1,6 +1,7 @@
 package com.blysin.demo.netty;
 
 import com.blysin.demo.netty.socket.NettyClient;
+import com.blysin.demo.netty.spring.heartbeat.HeartBeatsClient;
 import org.junit.Test;
 
 import java.io.*;
@@ -52,6 +53,24 @@ public class SocketClientTest {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+
+    @Test
+    public void heartbeatClientTest() {
+        for (int i = 0; i < 300; i++) {
+            HeartBeatsClient client = new HeartBeatsClient();
+            new Thread(() -> {
+                try {
+                    client.connect("10.1.10.30", 8899);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
+        while (true) {
+
         }
     }
 

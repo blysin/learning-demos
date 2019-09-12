@@ -1,4 +1,4 @@
-package com.blysin.demo.netty.spring.client;
+package com.blysin.demo.netty.spring.heartbeat;
 
 import io.netty.channel.ChannelHandler;
 

@@ -1,6 +1,7 @@
 package com.blysin.demo.netty.spring.server;
 
 
+import com.blysin.demo.netty.util.SocketMessageUtils;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -14,9 +15,13 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
+import java.util.Collections;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * descripiton:服务端
@@ -31,9 +36,14 @@ import java.net.InetSocketAddress;
 @Slf4j
 public class NettyServer {
     /**
-     * 所有的活动用户
+     * 所有的活动客户端
      */
-    public static final ChannelGroup GROUP = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    static final ChannelGroup GROUP = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+
+    /**
+     * 车场id与客户端映射map
+     */
+    static final ConcurrentHashMap<Integer, Channel> CLIENTS = new ConcurrentHashMap<>();
 
     private Channel channel;
 
@@ -93,11 +103,29 @@ public class NettyServer {
         return channel;
     }
 
+    /**
+     * 给所有客户端发送消息
+     *
+     * @param msg
+     */
     public void sendGroupMsg(String msg) {
-        GROUP.writeAndFlush("[ 群消息 ] " + buildMsg(msg));
+        GROUP.writeAndFlush("[ 群消息 ] " + SocketMessageUtils.buildMsg(msg));
     }
 
-    private String buildMsg(String msg) {
-        return msg.trim() + "\n";
+    public String sendParkMsg(Integer parkId, String msg) {
+        if (StringUtils.isBlank(msg)) {
+            return "消息为空，不作处理";
+        }
+        Channel channel = CLIENTS.get(parkId);
+        if (channel == null) {
+            return "车场没有上线，无法发送";
+        }
+        if (!channel.isOpen()) {
+            return "车场掉线，无法发送";
+        }
+
+        channel.writeAndFlush(SocketMessageUtils.buildMsg(msg));
+        return "success";
     }
+
 }

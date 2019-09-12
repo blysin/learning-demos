@@ -1,6 +1,12 @@
 package com.blysin.demo.netty.spring.heartbeat;
 
 
+import com.alibaba.fastjson.JSON;
+import com.blysin.demo.netty.spring.req.AuthReq;
+import com.blysin.demo.netty.spring.req.StpApiBaseReq;
+import com.blysin.demo.netty.spring.req.StpApiBaseResp;
+import com.blysin.demo.netty.util.MD5Util;
+import com.blysin.demo.netty.util.SocketMessageUtils;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -8,6 +14,9 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
+import sun.security.provider.MD5;
 
 /**
  * @author daishaokun
@@ -16,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @Sharable
 @Slf4j
 public class HeartBeatClientHandler extends SimpleChannelInboundHandler<String> {
+    private final String HEARTBEAT_CONTENT = "heartbeat\r\n";
 
 
     @Override
@@ -23,9 +33,28 @@ public class HeartBeatClientHandler extends SimpleChannelInboundHandler<String> 
         log.info("连接服务端成功");
         ctx.fireChannelActive();
 
-        // TODO 客户端连接建立成功，需要发送鉴权信息，10秒钟内如果没有发送鉴权信息连接可能会被中断
-        String str = "auth:2013\r\n";
-        ctx.writeAndFlush(str);
+        // TODO 客户端连接建立成功，需要发送鉴权信息，10秒钟内如果没有发送鉴权信息连接会被中断
+        auth(ctx);
+    }
+
+    /**
+     * 上报鉴权消息
+     *
+     * @param ctx
+     */
+    private void auth(ChannelHandlerContext ctx) {
+        int lotCode = 2264;
+        String token = "b8f622c4137c437eaf070dc154d011ab";
+
+        AuthReq authReq = new AuthReq();
+        authReq.setLotCode(lotCode);
+        authReq.setTs(System.currentTimeMillis());
+        String auth = MD5Util.convert(authReq.getLotCode() + authReq.getTs() + token);
+        authReq.setAuth(auth);
+
+        StpApiBaseReq apiBaseReq = new StpApiBaseReq("auth", authReq);
+
+        ctx.writeAndFlush(SocketMessageUtils.buildMsg(apiBaseReq));
     }
 
     @Override
@@ -35,13 +64,16 @@ public class HeartBeatClientHandler extends SimpleChannelInboundHandler<String> 
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String message) throws Exception {
-        // TODO 处理客户端返回的数据
-        log.info("收到服务端消息：" + message);
-        if ("Heartbeat".equals(message)) {
-            ctx.write("has read message from server");
-            ctx.flush();
+        if (StringUtils.isNotBlank(message)) {
+            StpApiBaseResp resp = JSON.parseObject(message, StpApiBaseResp.class);
+            if ("1002".equals(resp.getCode())) {
+                // 认证失败
+                log.error(resp.getMsg());
+            } else {
+                log.info("收到服务端消息：" + message);
+                // TODO 处理客户端返回的数据
+            }
         }
-        ReferenceCountUtil.release(message);
     }
 
     /**
@@ -62,12 +94,12 @@ public class HeartBeatClientHandler extends SimpleChannelInboundHandler<String> 
      */
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        log.info("心跳连接");
+        // log.info("心跳连接");
         super.userEventTriggered(ctx, evt);
         if (evt instanceof IdleStateEvent) {
             IdleStateEvent e = (IdleStateEvent) evt;
             if (e.state() == IdleState.WRITER_IDLE) {
-                ctx.writeAndFlush("heartbeat\r\n");
+                ctx.writeAndFlush(HEARTBEAT_CONTENT);
                 ctx.flush();
             }
         }

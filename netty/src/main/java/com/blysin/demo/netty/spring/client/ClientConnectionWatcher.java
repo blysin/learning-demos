@@ -1,5 +1,6 @@
 package com.blysin.demo.netty.spring.client;
 
+import com.blysin.demo.netty.spring.heartbeat.ChannelHandlerHolder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.util.Timeout;
