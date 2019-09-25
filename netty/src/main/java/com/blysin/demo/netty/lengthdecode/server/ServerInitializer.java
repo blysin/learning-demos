@@ -33,7 +33,7 @@ public class ServerInitializer extends ChannelInitializer<SocketChannel> {
                 // 自定义编码器
                 .addLast(new ProtocolEncoder())
                 // 超过60s没有消息则断开连接
-                .addLast(new ReadTimeoutHandler(10))
+                //.addLast(new ReadTimeoutHandler(10))
                 // 最终的消息处理
                 .addLast(new ServerHandler());
     }

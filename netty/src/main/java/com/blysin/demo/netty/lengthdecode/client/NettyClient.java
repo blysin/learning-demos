@@ -67,5 +67,18 @@ public class NettyClient {
 
     public static void main(String[] args) throws Exception {
         new NettyClient("127.0.0.1", 8899).run();
+        //for (int i = 0; i < 1000; i++) {
+        //    new Thread(() -> {
+        //        try {
+        //            new NettyClient("127.0.0.1", 8899).run();
+        //        } catch (IOException e) {
+        //            e.printStackTrace();
+        //        }
+        //    }).start();
+        //}
+        //
+        //while (true) {
+        //
+        //}
     }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blysin.demo.mybatis.dao.PlatformUserDao">
+
+
+    <select id="findUsers" resultType="com.blysin.demo.mybatis.dto.UserDTO">
+        select id, name
+        from tc_platform_user
+        where email like concat('%', #{state}, '%')
+    </select>
+
+    <select id="findById" resultType="com.blysin.demo.mybatis.dto.UserDTO">
+        select * from tc_platform_user where id = #{id}
+    </select>
+</mapper>

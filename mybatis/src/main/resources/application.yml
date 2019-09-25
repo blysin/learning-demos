@@ -1,0 +1,19 @@
+
+spring:
+  datasource:
+    username: root
+    password: Keytop:wabjtam!
+    url: jdbc:mysql://10.1.6.251:3306/ktcloud_web?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+  jpa:
+    show-sql: true
+
+mybatis-plus:
+  mapper-locations: classpath:/mapping/*Mapper.xml
+
+
+logging:
+  level:
+    com:
+      blysin:
+        demo:
+          mybatis: debug
