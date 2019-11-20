@@ -64,7 +64,50 @@ public class MybatisApplicationTests {
         //platformUserDao.deleteByMap(condition);
 
         Page page = new Page(0, 10);
+
         IPage<PlatformUser> userIPage = platformUserDao.findUsers(page, "com");
+
+
+        System.out.println(userIPage.getCurrent());
+        System.out.println(userIPage.getPages());
+        System.out.println(userIPage.getSize());
+        System.out.println(userIPage.getTotal());
+        System.out.println(userIPage.getRecords());
+
+        System.out.println("-----------------------------------------");
+
+        page = new Page(0, 2);
+        userIPage = platformUserDao.findUsers(page, "com");
+        System.out.println(userIPage.getCurrent());
+        System.out.println(userIPage.getPages());
+        System.out.println(userIPage.getSize());
+        System.out.println(userIPage.getTotal());
+        System.out.println(userIPage.getRecords());
+
+        System.out.println("-----------------------------------------");
+
+        page = new Page(1, 2);
+        userIPage = platformUserDao.findUsers(page, "com");
+        System.out.println(userIPage.getCurrent());
+        System.out.println(userIPage.getPages());
+        System.out.println(userIPage.getSize());
+        System.out.println(userIPage.getTotal());
+        System.out.println(userIPage.getRecords());
+
+        System.out.println("-----------------------------------------");
+
+        page = new Page(2, 2);
+        userIPage = platformUserDao.findUsers(page, "com");
+        System.out.println(userIPage.getCurrent());
+        System.out.println(userIPage.getPages());
+        System.out.println(userIPage.getSize());
+        System.out.println(userIPage.getTotal());
+        System.out.println(userIPage.getRecords());
+
+        System.out.println("-----------------------------------------");
+
+        page = new Page(3, 2);
+        userIPage = platformUserDao.findUsers(page, "com");
         System.out.println(userIPage.getCurrent());
         System.out.println(userIPage.getPages());
         System.out.println(userIPage.getSize());

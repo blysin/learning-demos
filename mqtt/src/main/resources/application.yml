@@ -1,0 +1,6 @@
+mqtt:
+  username:
+  password:
+  url: tcp://broker.hivemq.com:1883
+  qos: 0
+  downlink-topic: /park/12
