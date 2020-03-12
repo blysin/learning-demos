@@ -1,4 +1,4 @@
-package com.blysin.demo.netty.framework.base;
+package com.blysin.demo.netty.framework.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +30,7 @@ public class ExecutorConfig {
             // JVM可用处理器的个数
             final int cores = Runtime.getRuntime().availableProcessors();
             // 最佳的线程数 = CPU可用核心数 / (1 - 阻塞系数)
-            return (int) (cores / (1 - 0.7));
+            return (int) (cores / (1 - 0.8));
         } catch (Throwable e) {
             // 异常发生时姑且返回10个任务线程池
             return 10;

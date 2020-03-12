@@ -1,0 +1,15 @@
+GET http://localhost:8080/netty/send?msg=hello world
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-12-11T044830.200.txt
+
+###
+
+GET http://localhost:8080/netty/sendDir?msg={"cmd":"carCome","data":[{"id":170715,"carStyle":0,"carColor":0,"carNO":"京Q8K271","carPlateNumType":5,"imgUrl":"http://dev.tongtongtingche.com.cn/CloudInterface/image/special/600/600/1332/170715","imgName":"http://dev.tongtongtingche.com.cn/CloudInterface/image/special/600/600/1332/170715","nodeId":425,"opeType":1,"inTime":"2019-12-25 13:57:10"}],"reqId":"8DCYyxJzyip6"}
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-12-11T044830.200.txt
+
+###

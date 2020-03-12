@@ -42,8 +42,7 @@ public class MD5Util {
             int j = bytes.length;
             char[] chars = new char[j * 2];
             int k = 0;
-            for (int i = 0; i < bytes.length; i++) {
-                byte b = bytes[i];
+            for (byte b : bytes) {
                 chars[k++] = hexChars[b >>> 4 & 0xf];
                 chars[k++] = hexChars[b & 0xf];
             }

@@ -1,4 +1,4 @@
-package com.blysin.demo.netty.framework.util;
+package com.keytop.demo.client.util;
 
 import java.security.MessageDigest;
 

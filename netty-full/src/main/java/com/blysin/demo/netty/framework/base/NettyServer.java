@@ -1,7 +1,7 @@
-package com.blysin.demo.netty.spring.server;
+package com.blysin.demo.netty.framework.base;
 
 
-import com.blysin.demo.netty.framework.util.SocketMessageUtils;
+import com.blysin.demo.netty.framework.base.coder.ProtocolData;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -15,22 +15,16 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
-import java.util.Collections;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * descripiton:服务端
+ * netty客户端
  *
- * @author: www.iknowba.cn
- * @date: 2018/3/23
- * @time: 15:37
- * @modifier:
- * @since:
+ * @author daishaokun
+ * @date 2019-11-29
  */
 @Component
 @Slf4j
@@ -43,7 +37,7 @@ public class NettyServer {
     /**
      * 车场id与客户端映射map
      */
-    static final ConcurrentHashMap<Integer, Channel> CLIENTS = new ConcurrentHashMap<>();
+    static final ConcurrentHashMap<String, Channel> CLIENTS = new ConcurrentHashMap<>();
 
     private Channel channel;
 
@@ -71,7 +65,7 @@ public class NettyServer {
         bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
         bootstrap.handler(new LoggingHandler(LogLevel.INFO));
         // 下面这行什么作用？
-        bootstrap.localAddress(address);
+        //bootstrap.localAddress(address);
 
 
         ChannelFuture channelFuture = null;
@@ -109,23 +103,35 @@ public class NettyServer {
      * @param msg
      */
     public void sendGroupMsg(String msg) {
-        GROUP.writeAndFlush("[ 群消息 ] " + SocketMessageUtils.buildMsg(msg));
+        GROUP.writeAndFlush(ProtocolData.buildMsg(msg));
     }
 
-    public String sendParkMsg(Integer parkId, String msg) {
-        if (StringUtils.isBlank(msg)) {
-            return "消息为空，不作处理";
+    /**
+     * 给指定的车场发消息
+     *
+     * @param parkId
+     * @param msg
+     * @return
+     */
+    public boolean sendParkMsg(String parkId, Object msg) {
+        if (msg == null) {
+            log.info("消息为空，不作处理");
+            return false;
         }
         Channel channel = CLIENTS.get(parkId);
         if (channel == null) {
-            return "车场没有上线，无法发送";
+            log.info("车场没有上线，无法发送");
+            return false;
         }
         if (!channel.isOpen()) {
-            return "车场掉线，无法发送";
+            log.info("车场掉线，无法发送");
+            return false;
         }
 
-        channel.writeAndFlush(SocketMessageUtils.buildMsg(msg));
-        return "success";
+        ProtocolData data = ProtocolData.buildMsg(msg);
+        log.info("下发车场指令，车场：{}，内容：{}", parkId, data);
+        channel.writeAndFlush(data);
+        return true;
     }
 
 }

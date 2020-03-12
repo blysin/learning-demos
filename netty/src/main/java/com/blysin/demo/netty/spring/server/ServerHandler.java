@@ -2,8 +2,8 @@ package com.blysin.demo.netty.spring.server;
 
 
 import com.blysin.demo.netty.service.MessageService;
-import com.blysin.demo.netty.util.SocketMessageUtils;
-import com.blysin.demo.netty.util.SpringBootBeanUtils;
+import com.blysin.demo.netty.framework.util.SocketMessageUtils;
+import com.blysin.demo.netty.framework.util.SpringBootBeanUtils;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

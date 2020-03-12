@@ -1,22 +1,19 @@
-package com.blysin.demo.netty.spring.heartbeat;
+package com.keytop.demo.client.netty;
 
 
 import com.alibaba.fastjson.JSON;
-import com.blysin.demo.netty.spring.req.AuthReq;
-import com.blysin.demo.netty.spring.req.StpApiBaseReq;
-import com.blysin.demo.netty.spring.req.StpApiBaseResp;
-import com.blysin.demo.netty.framework.util.MD5Util;
-import com.blysin.demo.netty.framework.util.SocketMessageUtils;
+import com.keytop.demo.client.domain.AuthReq;
+import com.keytop.demo.client.domain.StpApiBaseReq;
+import com.keytop.demo.client.domain.StpApiBaseResp;
+import com.keytop.demo.client.netty.coder.ProtocolData;
+import com.keytop.demo.client.util.MD5Util;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
-import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
-import sun.security.provider.MD5;
 
 /**
  * @author daishaokun
@@ -25,15 +22,21 @@ import sun.security.provider.MD5;
 @Sharable
 @Slf4j
 public class HeartBeatClientHandler extends SimpleChannelInboundHandler<String> {
-    private final String HEARTBEAT_CONTENT = "heartbeat\r\n";
 
+    private String lotCode;
+    private String token;
+
+    public HeartBeatClientHandler(String lotCode, String token) {
+        this.lotCode = lotCode;
+        this.token = token;
+    }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.info("连接服务端成功");
         ctx.fireChannelActive();
 
-        // TODO 客户端连接建立成功，需要发送鉴权信息，10秒钟内如果没有发送鉴权信息连接会被中断
+        // 客户端连接建立成功，需要发送鉴权信息，如果超时没有发送鉴权信息连接会被中断
         auth(ctx);
     }
 
@@ -43,18 +46,16 @@ public class HeartBeatClientHandler extends SimpleChannelInboundHandler<String> 
      * @param ctx
      */
     private void auth(ChannelHandlerContext ctx) {
-        int lotCode = 2264;
-        String token = "b8f622c4137c437eaf070dc154d011ab";
-
+        // TODO 连接鉴权
         AuthReq authReq = new AuthReq();
         authReq.setLotCode(lotCode);
         authReq.setTs(System.currentTimeMillis());
-        String auth = MD5Util.convert(authReq.getLotCode() + authReq.getTs() + token);
+        String auth = MD5Util.convert(authReq.getLotCode() + authReq.getTs().toString() + token);
         authReq.setAuth(auth);
 
-        StpApiBaseReq apiBaseReq = new StpApiBaseReq("auth", authReq);
+        StpApiBaseReq apiBaseReq = new StpApiBaseReq(lotCode, "auth", authReq);
 
-        ctx.writeAndFlush(SocketMessageUtils.buildMsg(apiBaseReq));
+        ctx.writeAndFlush(ProtocolData.buildMsg(apiBaseReq));
     }
 
     @Override
@@ -99,7 +100,7 @@ public class HeartBeatClientHandler extends SimpleChannelInboundHandler<String> 
         if (evt instanceof IdleStateEvent) {
             IdleStateEvent e = (IdleStateEvent) evt;
             if (e.state() == IdleState.WRITER_IDLE) {
-                ctx.writeAndFlush(HEARTBEAT_CONTENT);
+                ctx.writeAndFlush(ProtocolData.HEARTBEAT_PROTOCOL);
                 ctx.flush();
             }
         }

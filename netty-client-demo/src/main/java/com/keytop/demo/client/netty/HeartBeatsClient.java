@@ -1,27 +1,31 @@
-package com.blysin.demo.netty.spring.heartbeat;
+package com.keytop.demo.client.netty;
 
 
-import com.blysin.demo.netty.framework.util.SocketMessageUtils;
+import com.alibaba.fastjson.JSON;
+import com.keytop.demo.client.netty.coder.ByteToProtoBufDecoder;
+import com.keytop.demo.client.netty.coder.ProtocolData;
+import com.keytop.demo.client.netty.coder.ProtocolEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.LineBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.HashedWheelTimer;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.keytop.demo.client.netty.coder.ByteToProtoBufDecoder.*;
+
+
 /**
  * 创建一个netty客户端。链接建立成功后需要向服务器发送鉴权消息{@link HeartBeatClientHandler#channelActive}，否则服务端不接受任何请求，且可能主动关闭链接。
- * 每10秒会发送一次心跳{@link HeartBeatClientHandler#userEventTriggered}，没有心跳会被服务端切断链接
+ * 每隔一段时间会发送一次心跳{@link HeartBeatClientHandler#userEventTriggered}，没有心跳会被服务端切断链接
+ * 修改心跳时间在56行，IdleStateHandler的第二个构造参数中
  * 调用{@link #sendMsg}可以向服务端发送消息
  * 方法{@link HeartBeatClientHandler#channelRead0}用户处理服务器响应的数据
  *
@@ -40,7 +44,7 @@ public class HeartBeatsClient {
 
     private Bootstrap boot;
 
-    public void connect(String host, int port) throws Exception {
+    public void connect(String host, int port, String lotCode, String token) throws Exception {
 
         boot = new Bootstrap();
         boot.group(group).channel(NioSocketChannel.class).handler(new LoggingHandler(LogLevel.INFO));
@@ -49,14 +53,17 @@ public class HeartBeatsClient {
 
             @Override
             public ChannelHandler[] handlers() {
-                return new ChannelHandler[]{
-                        this,
-                        new IdleStateHandler(0, 8, 0, TimeUnit.SECONDS),
-                        // 单次数据量不超过10KB
-                        new LineBasedFrameDecoder(10240),
-                        new StringDecoder(),
-                        new StringEncoder(),
-                        new HeartBeatClientHandler()};
+                return new ChannelHandler[]{this,
+                        // 定时消息，每60秒写入一次心跳数据
+                        new IdleStateHandler(0, 60, 0, TimeUnit.SECONDS),
+                        // 长度解析器
+                        new LengthFieldBasedFrameDecoder(MAX_FRAME_LENGTH, LENGTH_FIELD_OFFSET, LENGTH_FIELD_LENGTH, LENGTH_ADJUSTMENT, INITIAL_BYTES_TO_STRIP),
+                        // 自己定义解析器
+                        new ByteToProtoBufDecoder(),
+                        // 自定义编码器
+                        new ProtocolEncoder(),
+                        // 心跳连接，连接成功后会发送鉴权请求
+                        new HeartBeatClientHandler(lotCode, token)};
             }
         };
 
@@ -94,8 +101,8 @@ public class HeartBeatsClient {
      *
      * @param body
      */
-    public boolean sendMsg(String body) {
-        if (StringUtils.isBlank(body)) {
+    public boolean sendMsg(Object body) {
+        if (body == null) {
             log.info("消息内容为空，不发送");
             return false;
         }
@@ -103,7 +110,8 @@ public class HeartBeatsClient {
             log.info("服务器链接失败，消息无法发送");
             return false;
         }
-        connectionWatch.getChannel().writeAndFlush(SocketMessageUtils.buildMsg(body));
+        log.info("请求参数：\n{}", JSON.toJSONString(body, false));
+        connectionWatch.getChannel().writeAndFlush(ProtocolData.buildMsg(body));
         return true;
     }
 
@@ -115,7 +123,8 @@ public class HeartBeatsClient {
         HeartBeatsClient client = new HeartBeatsClient();
         new Thread(() -> {
             try {
-                client.connect("127.0.0.1", 8899);
+                //client.connect("192.168.56.99", 18899);
+                //client.connect("10.1.1.30", 8899);
             } catch (Exception e) {
                 e.printStackTrace();
             }

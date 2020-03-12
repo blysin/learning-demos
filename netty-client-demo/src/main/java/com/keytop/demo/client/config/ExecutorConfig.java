@@ -1,4 +1,4 @@
-package com.blysin.demo.netty.framework.base;
+package com.keytop.demo.client.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
