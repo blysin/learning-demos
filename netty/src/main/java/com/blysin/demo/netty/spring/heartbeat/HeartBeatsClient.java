@@ -49,14 +49,9 @@ public class HeartBeatsClient {
 
             @Override
             public ChannelHandler[] handlers() {
-                return new ChannelHandler[]{
-                        this,
-                        new IdleStateHandler(0, 8, 0, TimeUnit.SECONDS),
+                return new ChannelHandler[]{this, new IdleStateHandler(0, 8, 0, TimeUnit.SECONDS),
                         // 单次数据量不超过10KB
-                        new LineBasedFrameDecoder(10240),
-                        new StringDecoder(),
-                        new StringEncoder(),
-                        new HeartBeatClientHandler()};
+                        new LineBasedFrameDecoder(10240), new StringDecoder(), new StringEncoder(), new HeartBeatClientHandler()};
             }
         };
 

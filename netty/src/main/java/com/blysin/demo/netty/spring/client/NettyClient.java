@@ -51,13 +51,7 @@ public class NettyClient {
         final ClientConnectionWatcher watcher = new ClientConnectionWatcher(bootstrap, timer, port, host, true) {
             @Override
             public ChannelHandler[] handlers() {
-                return new ChannelHandler[]{
-                        this,
-                        new LineBasedFrameDecoder(1024),
-                        new IdleStateHandler(0, 3, 0, TimeUnit.SECONDS),
-                        new StringDecoder(),
-                        new StringEncoder(),
-                        new ClientHandler()};
+                return new ChannelHandler[]{this, new LineBasedFrameDecoder(1024), new IdleStateHandler(0, 3, 0, TimeUnit.SECONDS), new StringDecoder(), new StringEncoder(), new ClientHandler()};
             }
         };
 

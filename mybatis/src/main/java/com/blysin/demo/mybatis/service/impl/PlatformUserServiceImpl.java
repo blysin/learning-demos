@@ -11,6 +11,6 @@ import org.springframework.stereotype.Service;
  * @date 2019-09-24
  */
 @Service
-public class PlatformUserServiceImpl  extends ServiceImpl<PlatformUserDao, PlatformUser> implements PlatformUserService{
+public class PlatformUserServiceImpl extends ServiceImpl<PlatformUserDao, PlatformUser> implements PlatformUserService {
 
 }

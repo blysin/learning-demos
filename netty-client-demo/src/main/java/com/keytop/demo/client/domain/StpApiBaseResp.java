@@ -45,7 +45,7 @@ public class StpApiBaseResp extends StpResult {
         return fail(error, error.getDesc());
     }
 
-    public boolean isSuccess(){
+    public boolean isSuccess() {
         return RespEnum.SUCCESS.getCode().equals(this.getCode());
     }
 }

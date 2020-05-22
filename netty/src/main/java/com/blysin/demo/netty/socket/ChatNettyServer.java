@@ -38,9 +38,9 @@ public class ChatNettyServer {
                     //配置NioServerSocketChannel的TCP参数
                     .option(ChannelOption.SO_BACKLOG, 1024)
                     // 发送缓冲大小
-                    .option(ChannelOption.SO_SNDBUF,32*1024)
+                    .option(ChannelOption.SO_SNDBUF, 32 * 1024)
                     // 接收缓冲大小
-                    .option(ChannelOption.SO_RCVBUF,32*1024)
+                    .option(ChannelOption.SO_RCVBUF, 32 * 1024)
                     //设置绑定IO事件的处理类
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         //每次连接都会执行initChannel方法

@@ -13,6 +13,7 @@ public class NettyApplicationTests {
 
     @Autowired
     private AppProperties appProperties;
+
     @Test
     public void contextLoads() {
         System.out.println(appProperties);

@@ -19,7 +19,7 @@ public class KafkaCustomer {
 
     }
 
-//    @KafkaListener(topics = {"MSG"})
+    //    @KafkaListener(topics = {"MSG"})
     public void receiveMsg(String message) {
         System.out.println("MSG接受消息：" + message);
     }

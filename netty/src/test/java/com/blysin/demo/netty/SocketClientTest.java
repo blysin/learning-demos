@@ -15,6 +15,7 @@ import java.nio.ByteBuffer;
 public class SocketClientTest {
     private String host = "127.0.0.1";
     private int port = 8988;
+
     @Test
     public void nettyClient() {
         NettyClient client = new NettyClient();
@@ -23,13 +24,13 @@ public class SocketClientTest {
 
     @Test
     public void send2() throws IOException {
-        send("hello world ","hello world ","hello world ","hello world ");
+        send("hello world ", "hello world ", "hello world ", "hello world ");
     }
 
-    public void send(String... message){
+    public void send(String... message) {
         Socket socket = null;
         try {
-            socket =  new Socket(host, port);
+            socket = new Socket(host, port);
 
             PrintWriter out = new PrintWriter(socket.getOutputStream());
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -47,7 +48,7 @@ public class SocketClientTest {
             e.printStackTrace();
         } finally {
             try {
-                if(socket != null){
+                if (socket != null) {
                     socket.close();
                 }
             } catch (IOException e) {

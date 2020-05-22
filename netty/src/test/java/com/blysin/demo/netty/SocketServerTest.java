@@ -1,4 +1,5 @@
 package com.blysin.demo.netty;
+
 import com.blysin.demo.netty.socket.ChatNettyServer;
 import org.junit.Test;
 

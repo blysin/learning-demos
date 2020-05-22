@@ -32,8 +32,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
      * @throws Exception
      */
     @Override
-    protected void channelRead0(ChannelHandlerContext context, String msg)
-            throws Exception {
+    protected void channelRead0(ChannelHandlerContext context, String msg) throws Exception {
         Channel channel = context.channel();
         //当有用户发送消息的时候，对其他的用户发送消息
         for (Channel ch : group) {

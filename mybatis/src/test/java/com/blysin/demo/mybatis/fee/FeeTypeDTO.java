@@ -29,7 +29,7 @@ public class FeeTypeDTO {
      * 计费时长
      */
     @ApiModelProperty(value = "计费时长（分钟）", position = 3)
-    @Min(value = 0,message = "时段配置计费时长必须大于0")
+    @Min(value = 0, message = "时段配置计费时长必须大于0")
     @NotNull(message = "时段配置计费时长不能为空")
     private Long timeLong;
 
@@ -37,7 +37,7 @@ public class FeeTypeDTO {
      * 费率
      */
     @ApiModelProperty(value = "费率（元）", position = 4)
-    @Min(value = 0,message = "时段配置费率必须大于0")
+    @Min(value = 0, message = "时段配置费率必须大于0")
     @NotNull(message = "时段配置费率不能为空")
     private Long timeFee;
 

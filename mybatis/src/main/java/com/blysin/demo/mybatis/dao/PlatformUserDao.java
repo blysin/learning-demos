@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlatformUserDao extends BaseMapper<PlatformUser> {
 
-    IPage<UserDTO> findUsers(Page<PlatformUser> page,@Param("state") String email);
+    IPage<UserDTO> findUsers(Page<PlatformUser> page, @Param("state") String email);
 
     UserDTO findById(@Param("id") Integer id);
 

@@ -46,7 +46,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             parkId = Integer.parseInt(auth);
             CLIENTS.put(parkId, channel);
             channel.writeAndFlush("[you]: 鉴权成功，你好，车场：" + parkId + "\n");
-        }else if ("heartbeat".equalsIgnoreCase(msg)) {
+        } else if ("heartbeat".equalsIgnoreCase(msg)) {
             // 心跳不做处理
         } else {
             MessageService service = SpringBootBeanUtils.getBean(MessageService.class);

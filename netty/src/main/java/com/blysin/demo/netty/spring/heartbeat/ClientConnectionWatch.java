@@ -55,6 +55,7 @@ public abstract class ClientConnectionWatch extends ChannelInboundHandlerAdapter
 
     /**
      * 断线重连，重连时间按2^n次方累加，最多2^12秒
+     *
      * @param ctx
      * @throws Exception
      */

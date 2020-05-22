@@ -24,22 +24,22 @@ public class FeeAvailableDTO {
     private Integer id;
 
     @ApiModelProperty(value = "时段有效：开始日期，格式yyyy-MM-dd", position = 1)
-    @Pattern(regexp="[0-9]{4}-[0-9]{2}-[0-9]{2}",message = "分时间段开始日期格式错误")
+    @Pattern(regexp = "[0-9]{4}-[0-9]{2}-[0-9]{2}", message = "分时间段开始日期格式错误")
     @NotBlank(message = "分时间段开始日期不能为空")
     private String fromDate;
 
     @ApiModelProperty(value = "时段有效：结束日期，格式yyyy-MM-dd", position = 2)
-    @Pattern(regexp="[0-9]{4}-[0-9]{2}-[0-9]{2}",message = "分时间段结束日期格式错误")
+    @Pattern(regexp = "[0-9]{4}-[0-9]{2}-[0-9]{2}", message = "分时间段结束日期格式错误")
     @NotBlank(message = "分时间段结束日期不能为空")
     private String endDate;
 
     @ApiModelProperty(value = "开始时间段，格式：HH:mm:ss", position = 3)
-    @Pattern(regexp="[0-9]{2}:[0-9]{2}:[0-9]{2}",message = "分时间段开始时间段格式错误")
+    @Pattern(regexp = "[0-9]{2}:[0-9]{2}:[0-9]{2}", message = "分时间段开始时间段格式错误")
     @NotBlank(message = "分时间段开始时间段不能为空")
     private String sTime;
 
     @ApiModelProperty(value = "结束时间段，格式：HH:mm:ss", position = 4)
-    @Pattern(regexp="[0-9]{2}:[0-9]{2}:[0-9]{2}",message = "分时间段结束时间段格式错误")
+    @Pattern(regexp = "[0-9]{2}:[0-9]{2}:[0-9]{2}", message = "分时间段结束时间段格式错误")
     @NotBlank(message = "分时间段结束时间段不能为空")
     private String eTime;
 
