@@ -1,4 +1,4 @@
-package com.blysin.demo.mybatis.dto;
+package com.blysin.demo.web.dto;
 
 import lombok.Data;
 

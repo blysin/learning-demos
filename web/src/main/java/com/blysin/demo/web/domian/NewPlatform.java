@@ -1,6 +1,8 @@
 package com.blysin.demo.web.domian;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -9,6 +11,8 @@ import java.util.Date;
  * @date 2019-09-23
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class NewPlatform {
     private Integer id;
     private Date createTime;

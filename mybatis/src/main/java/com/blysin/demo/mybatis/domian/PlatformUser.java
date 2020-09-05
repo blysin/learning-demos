@@ -1,4 +1,4 @@
-package com.blysin.demo.mybatis.domian;
+package com.blysin.demo.web.domian;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

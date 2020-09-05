@@ -1,4 +1,4 @@
-package com.blysin.demo.mybatis.config;
+package com.blysin.demo.web.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize;

@@ -1,10 +1,10 @@
-package com.blysin.demo.mybatis.dao;
+package com.blysin.demo.web.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.blysin.demo.mybatis.domian.PlatformUser;
-import com.blysin.demo.mybatis.dto.UserDTO;
+import com.blysin.demo.web.domian.PlatformUser;
+import com.blysin.demo.web.dto.UserDTO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

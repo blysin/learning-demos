@@ -1,6 +1,6 @@
-package com.blysin.demo.mybatis.dao;
+package com.blysin.demo.web.dao;
 
-import com.blysin.demo.mybatis.domian.NewPlatform;
+import com.blysin.demo.web.domian.NewPlatform;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

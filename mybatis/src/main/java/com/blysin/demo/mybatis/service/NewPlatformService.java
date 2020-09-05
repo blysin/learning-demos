@@ -1,7 +1,7 @@
-package com.blysin.demo.mybatis.service;
+package com.blysin.demo.web.service;
 
-import com.blysin.demo.mybatis.dao.NewPlatformDao;
-import com.blysin.demo.mybatis.domian.NewPlatform;
+import com.blysin.demo.web.dao.NewPlatformDao;
+import com.blysin.demo.web.domian.NewPlatform;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;

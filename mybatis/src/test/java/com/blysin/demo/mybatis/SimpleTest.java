@@ -1,7 +1,7 @@
-package com.blysin.demo.mybatis;
+package com.blysin.demo.web;
 
 import com.alibaba.fastjson.JSON;
-import com.blysin.demo.mybatis.fee.FeeStaticDTO;
+import com.blysin.demo.web.fee.FeeStaticDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.Test;

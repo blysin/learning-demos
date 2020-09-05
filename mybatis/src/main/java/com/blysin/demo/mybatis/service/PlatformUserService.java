@@ -1,7 +1,7 @@
-package com.blysin.demo.mybatis.service;
+package com.blysin.demo.web.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.blysin.demo.mybatis.domian.PlatformUser;
+import com.blysin.demo.web.domian.PlatformUser;
 
 /**
  * @author daishaokun

@@ -1,14 +1,13 @@
-package com.blysin.demo.web;
+package cn.blysin.demo.shardingjdbc;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MybatisApplication {
+public class ShardingJdbcApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MybatisApplication.class, args);
+        SpringApplication.run(ShardingJdbcApplication.class, args);
     }
 
 }

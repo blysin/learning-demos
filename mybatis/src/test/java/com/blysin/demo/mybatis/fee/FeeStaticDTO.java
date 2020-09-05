@@ -1,4 +1,4 @@
-package com.blysin.demo.mybatis.fee;
+package com.blysin.demo.web.fee;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

@@ -1,13 +1,13 @@
-package com.blysin.demo.mybatis;
+package com.blysin.demo.web;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.blysin.demo.mybatis.dao.PlatformUserDao;
-import com.blysin.demo.mybatis.domian.PlatformUser;
-import com.blysin.demo.mybatis.service.NewPlatformService;
-import com.blysin.demo.mybatis.service.PlatformUserService;
+import com.blysin.demo.web.dao.PlatformUserDao;
+import com.blysin.demo.web.domian.PlatformUser;
+import com.blysin.demo.web.service.NewPlatformService;
+import com.blysin.demo.web.service.PlatformUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
