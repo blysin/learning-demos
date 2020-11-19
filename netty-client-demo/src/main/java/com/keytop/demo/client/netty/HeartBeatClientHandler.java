@@ -23,8 +23,8 @@ import org.apache.commons.lang3.StringUtils;
 @Slf4j
 public class HeartBeatClientHandler extends SimpleChannelInboundHandler<String> {
 
-    private String lotCode;
-    private String token;
+    private final String lotCode;
+    private final String token;
 
     public HeartBeatClientHandler(String lotCode, String token) {
         this.lotCode = lotCode;
