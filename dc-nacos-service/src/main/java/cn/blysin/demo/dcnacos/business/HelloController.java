@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @author daishaokun
  * @date 2020/11/24
@@ -33,8 +35,13 @@ public class HelloController implements HelloFeignService {
         return ResultInfo.SUCCESS();
     }
 
+    private AtomicInteger count = new AtomicInteger();
     @Override
     public ResultInfo get() {
+        int c = count.getAndIncrement();
+        if (c % 3 == 0) {
+            throw new RuntimeException("test");
+        }
         return ResultInfo.SUCCESS(serviceProperties.toString());
     }
 }

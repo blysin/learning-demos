@@ -6,4 +6,6 @@ spring:
     allow-bean-definition-overriding: true
   application:
     name: dc-nacos-api
-
+feign:
+  sentinel:
+    enabled: true

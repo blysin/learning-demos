@@ -1,5 +1,5 @@
 server:
-  port: 32003
+  port: 32004
 spring:
   main:
     # 允许重复定义bean，主要是用于openFeign

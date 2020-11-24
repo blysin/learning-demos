@@ -1,3 +1,5 @@
+#默认会获取${application-name}-${spring.profile.active}.yaml配置，
+#  如果有额外的配置，配置形式入：shared-configs[0]
 spring:
   profiles:
     active: dev
