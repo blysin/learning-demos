@@ -1,0 +1,9 @@
+server:
+  port: 32001
+spring:
+  main:
+    # 允许重复定义bean，主要是用于openFeign
+    allow-bean-definition-overriding: true
+  application:
+    name: dc-nacos-api
+
