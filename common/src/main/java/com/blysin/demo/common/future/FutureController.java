@@ -33,4 +33,12 @@ public class FutureController {
         //http://127.0.0.1:25001/future/push?result=哈哈哈哈&id=
         DefaultFuture.doReceived(id, result);
     }
+
+    /**
+     * 检查Futures里面有多少请求
+     */
+    @GetMapping("countFutures")
+    public int countFutures() {
+        return DefaultFuture.count();
+    }
 }

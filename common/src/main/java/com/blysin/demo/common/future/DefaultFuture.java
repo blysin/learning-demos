@@ -45,6 +45,10 @@ public class DefaultFuture {
         return FUTURES.get(id);
     }
 
+    public static int count(){
+        return FUTURES.keySet().size();
+    }
+
     /**
      * 消息分发器响应消息入口
      *
