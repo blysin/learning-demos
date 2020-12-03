@@ -22,6 +22,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.0.7</version>
+        </dependency>
+        <dependency>
             <groupId>cn.blysin.demo</groupId>
             <artifactId>dc-nacos-core</artifactId>
             <version>1.0.1</version>

@@ -1,0 +1,1190 @@
+[
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479604228211",
+      "vendor": "ZO Skin Health",
+      "id": 4479604228211,
+      "variants": [
+        {
+          "price": 7000,
+          "name": "Daily Sheer Broad Spectrum SPF 50 - 45 mL / 1.5 Fl. Oz.",
+          "id": 31618262106227,
+          "sku": "902300",
+          "public_title": "45 mL / 1.5 Fl. Oz."
+        }
+      ],
+      "type": "Sunscreen"
+    },
+    "page": {
+      "resourceId": 4479604228211,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479604457587",
+      "vendor": "ZO Skin Health",
+      "id": 4479604457587,
+      "variants": [
+        {
+          "price": 4700,
+          "name": "Broad Spectrum Sunscreen SPF 50 - 118 g / 4 Fl. Oz.",
+          "id": 31799533305971,
+          "sku": "903300",
+          "public_title": "118 g / 4 Fl. Oz."
+        }
+      ],
+      "type": "Sunscreen"
+    },
+    "page": {
+      "resourceId": 4479604457587,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607898227",
+      "vendor": "ZO Skin Health",
+      "id": 4479607898227,
+      "variants": [
+        {
+          "price": 45400,
+          "name": "Firming Serum Accelerated - 6 Serums",
+          "id": 31618292088947,
+          "sku": "930300",
+          "public_title": "6 Serums"
+        }
+      ],
+      "type": "Professional Treatment"
+    },
+    "page": {
+      "resourceId": 4479607898227,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607799923",
+      "vendor": "ZO Skin Health",
+      "id": 4479607799923,
+      "variants": [
+        {
+          "price": 45400,
+          "name": "Rozatrol<sup>®</sup> Serum Accelerated - 6 Serums",
+          "id": 31618290647155,
+          "sku": "930200",
+          "public_title": "6 Serums"
+        }
+      ],
+      "type": "Professional Treatment"
+    },
+    "page": {
+      "resourceId": 4479607799923,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606489203",
+      "vendor": "ZO Skin Health",
+      "id": 4479606489203,
+      "variants": [
+        {
+          "price": 45400,
+          "name": "HydraFacial Rozatrol<sup>®</sup> Booster - 6 Booster Serum Vials",
+          "id": 31618273345651,
+          "sku": "910600",
+          "public_title": "6 Booster Serum Vials"
+        }
+      ],
+      "type": "Professional Treatment"
+    },
+    "page": {
+      "resourceId": 4479606489203,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606423667",
+      "vendor": "ZO Skin Health",
+      "id": 4479606423667,
+      "variants": [
+        {
+          "price": 39000,
+          "name": "HydraFacial Brightalive<sup>®</sup> Booster - 6 Booster Serum Vials",
+          "id": 31618273280115,
+          "sku": "910100",
+          "public_title": "6 Booster Serum Vials"
+        }
+      ],
+      "type": "Professional Treatment"
+    },
+    "page": {
+      "resourceId": 4479606423667,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607046259",
+      "vendor": "ZO Skin Health",
+      "id": 4479607046259,
+      "variants": [
+        {
+          "price": 0,
+          "name": "ZO 3-Step Peel<sup>®</sup> - 6 Peel Treatments",
+          "id": 31618279866483,
+          "sku": "913100",
+          "public_title": "6 Peel Treatments"
+        }
+      ],
+      "type": "Professional Treatment"
+    },
+    "page": {
+      "resourceId": 4479607046259,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606980723",
+      "vendor": "ZO Skin Health",
+      "id": 4479606980723,
+      "variants": [
+        {
+          "price": 60000,
+          "name": "ZO Controlled Depth Peel<sup>®</sup> - 12 Peel Treatments",
+          "id": 31618276753523,
+          "sku": "910500",
+          "public_title": "12 Peel Treatments"
+        }
+      ],
+      "type": "Professional Treatment"
+    },
+    "page": {
+      "resourceId": 4479606980723,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607341171",
+      "vendor": "ZO Skin Health",
+      "id": 4479607341171,
+      "variants": [
+        {
+          "price": 0,
+          "name": "Post Procedure Program - 5 Product Regimen",
+          "id": 31618286125171,
+          "sku": "917800",
+          "public_title": "5 Product Regimen"
+        }
+      ],
+      "type": "Professional Treatment"
+    },
+    "page": {
+      "resourceId": 4479607341171,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479604654195",
+      "vendor": "ZO Skin Health",
+      "id": 4479604654195,
+      "variants": [
+        {
+          "price": 10600,
+          "name": "Recovery Crème - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618263416947,
+          "sku": "903700",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Hydrator"
+    },
+    "page": {
+      "resourceId": 4479604654195,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607275635",
+      "vendor": "ZO Skin Health",
+      "id": 4479607275635,
+      "variants": [
+        {
+          "price": 10600,
+          "name": "Hydrating Crème - 113 g / 4 Oz.",
+          "id": 31799535599731,
+          "sku": "915300",
+          "public_title": "113 g / 4 Oz."
+        }
+      ],
+      "type": "Hydrator"
+    },
+    "page": {
+      "resourceId": 4479607275635,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479603277939",
+      "vendor": "ZO Skin Health",
+      "id": 4479603277939,
+      "variants": [
+        {
+          "price": 9500,
+          "name": "Cellulite Control - 150 g / 5.29 Oz.",
+          "id": 31799532978291,
+          "sku": "069300",
+          "public_title": "150 g / 5.29 Oz."
+        }
+      ],
+      "type": "Body Care"
+    },
+    "page": {
+      "resourceId": 4479603277939,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606194291",
+      "vendor": "ZO Skin Health",
+      "id": 4479606194291,
+      "variants": [
+        {
+          "price": 9500,
+          "name": "Body Emulsion - 240 mL / 8 Fl. Oz.",
+          "id": 31618272952435,
+          "sku": "907600",
+          "public_title": "240 mL / 8 Fl. Oz."
+        }
+      ],
+      "type": "Body Care"
+    },
+    "page": {
+      "resourceId": 4479606194291,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607996531",
+      "vendor": "ZO Skin Health",
+      "id": 4479607996531,
+      "variants": [
+        {
+          "price": 6500,
+          "name": "Sunscreen + Powder Broad-Spectrum - Light - Light",
+          "id": 31618293858419,
+          "sku": "918600",
+          "public_title": "Light"
+        }
+      ],
+      "type": "Sunscreen"
+    },
+    "page": {
+      "resourceId": 4479607996531,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607963763",
+      "vendor": "ZO Skin Health",
+      "id": 4479607963763,
+      "variants": [
+        {
+          "price": 6500,
+          "name": "Sunscreen + Powder Broad-Spectrum - Medium - Medium",
+          "id": 31618293792883,
+          "sku": "914100",
+          "public_title": "Medium"
+        }
+      ],
+      "type": "Sunscreen"
+    },
+    "page": {
+      "resourceId": 4479607963763,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479608062067",
+      "vendor": "ZO Skin Health",
+      "id": 4479608062067,
+      "variants": [
+        {
+          "price": 6500,
+          "name": "Sunscreen + Powder Broad-Spectrum - Deep - Deep",
+          "id": 31618294022259,
+          "sku": "918900",
+          "public_title": "Deep"
+        }
+      ],
+      "type": "Sunscreen"
+    },
+    "page": {
+      "resourceId": 4479608062067,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479604392051",
+      "vendor": "ZO Skin Health",
+      "id": 4479604392051,
+      "variants": [
+        {
+          "price": 6500,
+          "name": "Sunscreen + Primer SPF 30 - 30 mL / 1 Fl. Oz.",
+          "id": 31618262237299,
+          "sku": "919200",
+          "public_title": "30 mL / 1 Fl. Oz."
+        }
+      ],
+      "type": "Sunscreen"
+    },
+    "page": {
+      "resourceId": 4479604392051,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479604326515",
+      "vendor": "ZO Skin Health",
+      "id": 4479604326515,
+      "variants": [
+        {
+          "price": 7000,
+          "name": "Smart Tone Broad Spectrum SPF 50 - 45 mL / 1.5 Fl. Oz.",
+          "id": 31618262171763,
+          "sku": "902600",
+          "public_title": "45 mL / 1.5 Fl. Oz."
+        }
+      ],
+      "type": "Sunscreen"
+    },
+    "page": {
+      "resourceId": 4479604326515,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479605899379",
+      "vendor": "ZO Skin Health",
+      "id": 4479605899379,
+      "variants": [
+        {
+          "price": 3500,
+          "name": "Acne Control - 60 mL / 2 Fl. Oz.",
+          "id": 31618269020275,
+          "sku": "907000",
+          "public_title": "60 mL / 2 Fl. Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479605899379,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4538717569139",
+      "vendor": "ZO Skin Health",
+      "id": 4538717569139,
+      "variants": [
+        {
+          "price": 4500,
+          "name": "Complexion Clearing Masque - 85 g / 3 Oz.",
+          "id": 31865508855923,
+          "sku": "930700",
+          "public_title": "85 g / 3 Oz."
+        }
+      ],
+      "type": "Peels + Masques"
+    },
+    "page": {
+      "resourceId": 4538717569139,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606587507",
+      "vendor": "ZO Skin Health",
+      "id": 4479606587507,
+      "variants": [
+        {
+          "price": 2900,
+          "name": "Correct + Conceal - Light - 2.3 g / 0.08 Oz.",
+          "id": 31799534157939,
+          "sku": "907100",
+          "public_title": "2.3 g / 0.08 Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479606587507,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606653043",
+      "vendor": "ZO Skin Health",
+      "id": 4479606653043,
+      "variants": [
+        {
+          "price": 2900,
+          "name": "Correct + Conceal - Medium - 2.3 g / 0.08 Oz.",
+          "id": 31799534190707,
+          "sku": "907200",
+          "public_title": "2.3 g / 0.08 Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479606653043,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606063219",
+      "vendor": "ZO Skin Health",
+      "id": 4479606063219,
+      "variants": [
+        {
+          "price": 8800,
+          "name": "Rozatrol<sup>®</sup> - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618272690291,
+          "sku": "907400",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479606063219,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606358131",
+      "vendor": "ZO Skin Health",
+      "id": 4479606358131,
+      "variants": [
+        {
+          "price": 18000,
+          "name": "Skin Normalizing System - 5 Product Regimen",
+          "id": 31618273181811,
+          "sku": "909300",
+          "public_title": "5 Product Regimen"
+        }
+      ],
+      "type": "Programs + Kits"
+    },
+    "page": {
+      "resourceId": 4479606358131,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606259827",
+      "vendor": "ZO Skin Health",
+      "id": 4479606259827,
+      "variants": [
+        {
+          "price": 13000,
+          "name": "Intense Eye Crème - 15 mL / 0.5 Fl. Oz.",
+          "id": 31618273017971,
+          "sku": "907900",
+          "public_title": "15 mL / 0.5 Fl. Oz."
+        }
+      ],
+      "type": "Eye Care"
+    },
+    "page": {
+      "resourceId": 4479606259827,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607406707",
+      "vendor": "ZO Skin Health",
+      "id": 4479607406707,
+      "variants": [
+        {
+          "price": 13000,
+          "name": "Eye Brightening Crème - 15 mL / 0.5 Fl. Oz.",
+          "id": 31618286190707,
+          "sku": "918300",
+          "public_title": "15 mL / 0.5 Fl. Oz."
+        }
+      ],
+      "type": "Eye Care"
+    },
+    "page": {
+      "resourceId": 4479607406707,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479604523123",
+      "vendor": "ZO Skin Health",
+      "id": 4479604523123,
+      "variants": [
+        {
+          "price": 10600,
+          "name": "Renewal Crème - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618262368371,
+          "sku": "903600",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Hydrator"
+    },
+    "page": {
+      "resourceId": 4479604523123,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606816883",
+      "vendor": "ZO Skin Health",
+      "id": 4479606816883,
+      "variants": [
+        {
+          "price": 21300,
+          "name": "Anti-Aging Program - 5 Product Regimen",
+          "id": 31618276622451,
+          "sku": "912200",
+          "public_title": "5 Product Regimen"
+        }
+      ],
+      "type": "Programs + Kits"
+    },
+    "page": {
+      "resourceId": 4479606816883,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479605571699",
+      "vendor": "ZO Skin Health",
+      "id": 4479605571699,
+      "variants": [
+        {
+          "price": 12000,
+          "name": "Brightalive<sup>®</sup> - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618267938931,
+          "sku": "906200",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479605571699,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479605833843",
+      "vendor": "ZO Skin Health",
+      "id": 4479605833843,
+      "variants": [
+        {
+          "price": 8200,
+          "name": "Retinol Skin Brightener .25% - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618268201075,
+          "sku": "906900",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Retinol"
+    },
+    "page": {
+      "resourceId": 4479605833843,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479605702771",
+      "vendor": "ZO Skin Health",
+      "id": 4479605702771,
+      "variants": [
+        {
+          "price": 12000,
+          "name": "Retinol Skin Brightener 1% - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618268070003,
+          "sku": "906400",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Retinol"
+    },
+    "page": {
+      "resourceId": 4479605702771,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606325363",
+      "vendor": "ZO Skin Health",
+      "id": 4479606325363,
+      "variants": [
+        {
+          "price": 18000,
+          "name": "Skin Brightening Program - 5 Product Regimen",
+          "id": 31618273149043,
+          "sku": "909000",
+          "public_title": "5 Product Regimen"
+        }
+      ],
+      "type": "Programs + Kits"
+    },
+    "page": {
+      "resourceId": 4479606325363,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607701619",
+      "vendor": "ZO Skin Health",
+      "id": 4479607701619,
+      "variants": [
+        {
+          "price": 26000,
+          "name": "Skin Brightening Program + Texture Kit - 4 Product Regimen",
+          "id": 31618290483315,
+          "sku": "919700",
+          "public_title": "4 Product Regimen"
+        }
+      ],
+      "type": "Programs + Kits"
+    },
+    "page": {
+      "resourceId": 4479607701619,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607210099",
+      "vendor": "ZO Skin Health",
+      "id": 4479607210099,
+      "variants": [
+        {
+          "price": 18200,
+          "name": "Pigment Control Program + Hydroquinone - 6 Product Regimen",
+          "id": 31618285600883,
+          "sku": "915200",
+          "public_title": "6 Product Regimen"
+        }
+      ],
+      "type": "Professional Treatment"
+    },
+    "page": {
+      "resourceId": 4479607210099,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479605375091",
+      "vendor": "ZO Skin Health",
+      "id": 4479605375091,
+      "variants": [
+        {
+          "price": 6600,
+          "name": "Pigment Control Crème 4% HQ - RX - 80 mL / 2.7 Fl. Oz.",
+          "id": 31618267349107,
+          "sku": "905400",
+          "public_title": "80 mL / 2.7 Fl. Oz."
+        }
+      ],
+      "type": "Rx"
+    },
+    "page": {
+      "resourceId": 4479605375091,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479605538931",
+      "vendor": "ZO Skin Health",
+      "id": 4479605538931,
+      "variants": [
+        {
+          "price": 12500,
+          "name": "Pigment Control + Brightening Crème 4% HQ - RX - 81 mL / 2.7 Fl. Oz.",
+          "id": 31618267906163,
+          "sku": "906000",
+          "public_title": "81 mL / 2.7 Fl. Oz."
+        }
+      ],
+      "type": "Rx"
+    },
+    "page": {
+      "resourceId": 4479605538931,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479605047411",
+      "vendor": "ZO Skin Health",
+      "id": 4479605047411,
+      "variants": [
+        {
+          "price": 14800,
+          "name": "Growth Factor Serum - 30 mL / 1 Fl. Oz.",
+          "id": 31618264006771,
+          "sku": "904400",
+          "public_title": "30 mL / 1 Fl. Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479605047411,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607079027",
+      "vendor": "ZO Skin Health",
+      "id": 4479607079027,
+      "variants": [
+        {
+          "price": 23500,
+          "name": "Firming Serum - 47 mL / 1.6 Fl Oz.",
+          "id": 31618280947827,
+          "sku": "912700",
+          "public_title": "47 mL / 1.6 Fl Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479607079027,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479607439475",
+      "vendor": "ZO Skin Health",
+      "id": 4479607439475,
+      "variants": [
+        {
+          "price": 14500,
+          "name": "Wrinkle + Texture Repair - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618286223475,
+          "sku": "918400",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Retinol"
+    },
+    "page": {
+      "resourceId": 4479607439475,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4553239527539",
+      "vendor": "ZO Skin Health",
+      "id": 4553239527539,
+      "variants": [
+        {
+          "price": 17000,
+          "name": "Radical Night Repair - 60 mL / 2 Fl. Oz.",
+          "id": 31925241151603,
+          "sku": "940000",
+          "public_title": "60 mL / 2 Fl. Oz."
+        }
+      ],
+      "type": "Retinol"
+    },
+    "page": {
+      "resourceId": 4553239527539,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479604752499",
+      "vendor": "ZO Skin Health",
+      "id": 4479604752499,
+      "variants": [
+        {
+          "price": 9300,
+          "name": "10% Vitamin C Self-Activating - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618263711859,
+          "sku": "904000",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479604752499,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606456435",
+      "vendor": "ZO Skin Health",
+      "id": 4479606456435,
+      "variants": [
+        {
+          "price": 6000,
+          "name": "Instant Pore Refiner - 29 g / 1 Oz.",
+          "id": 31799533863027,
+          "sku": "905000",
+          "public_title": "29 g / 1 Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479606456435,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479605276787",
+      "vendor": "ZO Skin Health",
+      "id": 4479605276787,
+      "variants": [
+        {
+          "price": 7000,
+          "name": "Exfoliation Accelerator - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618267119731,
+          "sku": "905200",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479605276787,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479605211251",
+      "vendor": "ZO Skin Health",
+      "id": 4479605211251,
+      "variants": [
+        {
+          "price": 7200,
+          "name": "Enzymatic Peel - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618267086963,
+          "sku": "905100",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Peels + Masques"
+    },
+    "page": {
+      "resourceId": 4479605211251,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479606751347",
+      "vendor": "ZO Skin Health",
+      "id": 4479606751347,
+      "variants": [
+        {
+          "price": 12400,
+          "name": "Daily Skincare Program - 4 Product Regimen",
+          "id": 31618276556915,
+          "sku": "912100",
+          "public_title": "4 Product Regimen"
+        }
+      ],
+      "type": "Programs + Kits"
+    },
+    "page": {
+      "resourceId": 4479606751347,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4492937953395",
+      "vendor": "ZO Skin Health",
+      "id": 4492937953395,
+      "variants": [
+        {
+          "price": 4500,
+          "name": "Gentle Cleanser - 200 mL / 6.7 Fl. Oz.",
+          "id": 31666410389619,
+          "sku": "900300",
+          "public_title": "200 mL / 6.7 Fl. Oz."
+        }
+      ],
+      "type": "Cleanser"
+    },
+    "page": {
+      "resourceId": 4492937953395,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479603310707",
+      "vendor": "ZO Skin Health",
+      "id": 4479603310707,
+      "variants": [
+        {
+          "price": 4500,
+          "name": "Exfoliating Cleanser - 200 mL / 6.7 Fl. Oz.",
+          "id": 31618259648627,
+          "sku": "900100",
+          "public_title": "200 mL / 6.7 Fl. Oz."
+        }
+      ],
+      "type": "Cleanser"
+    },
+    "page": {
+      "resourceId": 4479603310707,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479603409011",
+      "vendor": "ZO Skin Health",
+      "id": 4479603409011,
+      "variants": [
+        {
+          "price": 4500,
+          "name": "Hydrating Cleanser - 200 mL / 6.7 Fl. Oz.",
+          "id": 31618259746931,
+          "sku": "900200",
+          "public_title": "200 mL / 6.7 Fl. Oz."
+        }
+      ],
+      "type": "Cleanser"
+    },
+    "page": {
+      "resourceId": 4479603409011,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479603441779",
+      "vendor": "ZO Skin Health",
+      "id": 4479603441779,
+      "variants": [
+        {
+          "price": 6700,
+          "name": "Exfoliating Polish - 65 g / 2.3 Oz.",
+          "id": 31618259779699,
+          "sku": "900400",
+          "public_title": "65 g / 2.3 Oz."
+        }
+      ],
+      "type": "Exfoliator"
+    },
+    "page": {
+      "resourceId": 4479603441779,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479603507315",
+      "vendor": "ZO Skin Health",
+      "id": 4479603507315,
+      "variants": [
+        {
+          "price": 8000,
+          "name": "Dual Action Scrub - 116 g / 4 Oz.",
+          "id": 31799533011059,
+          "sku": "900500",
+          "public_title": "116 g / 4 Oz."
+        }
+      ],
+      "type": "Exfoliator"
+    },
+    "page": {
+      "resourceId": 4479603507315,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479603638387",
+      "vendor": "ZO Skin Health",
+      "id": 4479603638387,
+      "variants": [
+        {
+          "price": 5100,
+          "name": "Complexion Renewal Pads - 60 Pads",
+          "id": 31618260107379,
+          "sku": "900600",
+          "public_title": "60 Pads"
+        }
+      ],
+      "type": "Toner"
+    },
+    "page": {
+      "resourceId": 4479603638387,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479603736691",
+      "vendor": "ZO Skin Health",
+      "id": 4479603736691,
+      "variants": [
+        {
+          "price": 6200,
+          "name": "Oil Control Pads Acne Treatment - 60 Pads",
+          "id": 31618260435059,
+          "sku": "900700",
+          "public_title": "60 Pads"
+        }
+      ],
+      "type": "Toner"
+    },
+    "page": {
+      "resourceId": 4479603736691,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479603769459",
+      "vendor": "ZO Skin Health",
+      "id": 4479603769459,
+      "variants": [
+        {
+          "price": 3700,
+          "name": "Calming Toner - 180 mL / 6 Fl. Oz.",
+          "id": 31618260467827,
+          "sku": "920500",
+          "public_title": "180 mL / 6 Fl. Oz."
+        }
+      ],
+      "type": "Toner"
+    },
+    "page": {
+      "resourceId": 4479603769459,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  },
+  {
+    "product": {
+      "gid": "gid://shopify/Product/4479604916339",
+      "vendor": "ZO Skin Health",
+      "id": 4479604916339,
+      "variants": [
+        {
+          "price": 15000,
+          "name": "Daily Power Defense - 50 mL / 1.7 Fl. Oz.",
+          "id": 31618263875699,
+          "sku": "904200",
+          "public_title": "50 mL / 1.7 Fl. Oz."
+        }
+      ],
+      "type": "Targeted Treatment"
+    },
+    "page": {
+      "resourceId": 4479604916339,
+      "pageType": "product",
+      "resourceType": "product"
+    }
+  }
+]
