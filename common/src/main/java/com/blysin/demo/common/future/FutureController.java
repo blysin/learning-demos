@@ -9,6 +9,8 @@ import java.util.UUID;
 /**
  * 异步转同步实现，借鉴dubbo的实现逻辑
  *
+ * 实际上就是nio的思想，多个请求复用一条链接，由一个消息分发器（DafaultFuture）来负责分发消息，
+ *
  * @author daishaokun
  * @date 2020/12/3
  */
