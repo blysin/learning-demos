@@ -12,6 +12,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
+import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -71,6 +72,8 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         }
     }
 
+    private final AttributeKey<String> CLIENT_ID = AttributeKey.newInstance("userId");
+
     /**
      * 处理鉴权请求
      *
@@ -86,6 +89,8 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             log.info("鉴权失败-ID:{}，消息体：{}", req.getReqId(), msg);
             sendMsgAndCloseClient(context, NettyConstant.AUTH_FAIL);
         } else {
+            //attr方法类似与request的attribute，可以用来放用户id之类的标识，这样客户端就不用每次都带当前的用户标识过来了
+            channel.attr(CLIENT_ID).set(req.getLotCode());
             StpApiBaseResp resp = StpApiBaseResp.success(req.getReqId());
             resp.setMsg("鉴权成功");
             context.writeAndFlush(ProtocolData.buildMsg(resp));
