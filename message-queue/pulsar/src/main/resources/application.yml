@@ -1,0 +1,18 @@
+server:
+  port: 11889
+pulsar:
+  service-url: pulsar://101.37.145.159:6650
+  io-threads: 10
+  listener-threads: 10
+  enable-tcp-no-delay: false
+  # 心跳间隔
+  keep-alive-interval-sec: 20
+  #创建链接时的链接超时，如果超过这个时间没收到响应，则链接会被丢弃
+  connection-timeout-sec: 10
+  #操作超时
+  operation-timeout-sec: 15
+  #重试算法
+  starting-backoff-interval-ms: 100
+  #重试算法
+  max-backoff-interval-sec: 10
+

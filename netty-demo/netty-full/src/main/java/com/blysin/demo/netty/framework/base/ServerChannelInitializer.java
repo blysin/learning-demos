@@ -17,7 +17,7 @@ import static com.blysin.demo.netty.framework.base.coder.ByteToProtoBufDecoder.*
  * @author daishaokun
  * @date 2019-11-29
  */
-public class ServerInitializer extends ChannelInitializer<SocketChannel> {
+public class ServerChannelInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {

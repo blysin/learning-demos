@@ -53,7 +53,8 @@ public class BioServer {
         @Override
         public void run() {
             log.info("生成链接，客户端端口：{}，线程id：{}", client.getPort(), Thread.currentThread().getName());
-            try (Scanner scanner = new Scanner(client.getInputStream()); PrintStream printStream = new PrintStream(client.getOutputStream(), true)) {
+            try (Scanner scanner = new Scanner(client.getInputStream());
+                 PrintStream printStream = new PrintStream(client.getOutputStream(), true)) {
                 scanner.useDelimiter("\n");
                 printStream.println("你好:" + Thread.currentThread().getName());
                 while (scanner.hasNext()) {

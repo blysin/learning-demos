@@ -3,24 +3,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.blysin</groupId>
         <artifactId>learning-demos</artifactId>
+        <groupId>com.blysin</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>nacos-service</artifactId>
+    <artifactId>message-queue</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>dc-nacos-service</module>
-        <module>dc-nacos-core</module>
-        <module>dc-nacos-api</module>
+        <module>pulsar</module>
     </modules>
-
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
+    <dependencies>
+
+
+    </dependencies>
+
 
 </project>

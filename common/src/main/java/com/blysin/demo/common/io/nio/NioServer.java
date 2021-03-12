@@ -26,7 +26,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Slf4j
 public class NioServer implements Runnable {
-    private Selector selector;
+    private static Selector selector;
+    static{
+        //生成selector调度器
+        try {
+            selector = Selector.open();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         int port = 23004;
@@ -46,9 +54,6 @@ public class NioServer implements Runnable {
         //channel链接
         try {
             ServerSocketChannel channel = ServerSocketChannel.open();
-            //生成selector调度器
-            selector = Selector.open();
-
             //默认是阻塞式的，需要配置成非阻塞的
             channel.configureBlocking(false);
             //绑定ip，最大连接数1024
@@ -76,7 +81,7 @@ public class NioServer implements Runnable {
             //非核心线程的存活时间，超过时间就会被回收
             0L, TimeUnit.MILLISECONDS,
             //线程达到超过核心线程后的等待队列，
-            new LinkedBlockingQueue<>(10),
+            new ArrayBlockingQueue<>(10),
             //线程工厂
             r -> new Thread(r, "nio-executor-" + atomicInteger.getAndIncrement()),
             //拒绝策略，有当前线程执行策略，拒绝策略，抛弃策略（没有异常），抛弃旧任务策略

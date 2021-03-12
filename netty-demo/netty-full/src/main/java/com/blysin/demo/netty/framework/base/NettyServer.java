@@ -39,6 +39,9 @@ public class NettyServer {
      */
     static final ConcurrentHashMap<String, Channel> CLIENTS = new ConcurrentHashMap<>();
 
+    /**
+     * 服务端通道
+     */
     private Channel channel;
 
     /**
@@ -56,7 +59,8 @@ public class NettyServer {
         bootstrap.group(bossGroup, workerGroup);
         //配置 Channel
         bootstrap.channel(NioServerSocketChannel.class);
-        bootstrap.childHandler(new ServerInitializer());
+        //注册channel
+        bootstrap.childHandler(new ServerChannelInitializer());
         //BACKLOG用于构造服务端套接字ServerSocket对象，
         // 标识当服务器请求处理线程全满时，用于临时存放已完成三次握手的请求的队列的最大长度
         bootstrap.option(ChannelOption.SO_BACKLOG, 1024).childOption(ChannelOption.SO_KEEPALIVE, true);
