@@ -4,6 +4,7 @@ import com.blysin.config.TopicConstant;
 import com.blysin.domain.MsgBody;
 import io.github.majusko.pulsar.annotation.PulsarConsumer;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.pulsar.client.api.SubscriptionType;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,12 +15,12 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class ConsumerService {
 
-    @PulsarConsumer(topic = TopicConstant.TOPIC_STRING, clazz = String.class)
+    @PulsarConsumer(topic = TopicConstant.TOPIC_STRING, clazz = String.class, subscriptionType = SubscriptionType.Shared)
     public void stringMsg(String body) {
-        log.info("string msg :{}", body);
+        log.info("收到消息 msg :{}", body);
     }
 
-    @PulsarConsumer(topic = TopicConstant.TOPIC_DOMAIN, clazz = MsgBody.class)
+    //@PulsarConsumer(topic = TopicConstant.TOPIC_DOMAIN, clazz = MsgBody.class)
     public void domainMsg(MsgBody body) {
         log.info("domain msg :{}", body);
         if (body.getAge() == 10) {

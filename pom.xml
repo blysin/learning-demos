@@ -11,6 +11,7 @@
         <module>netty-demo</module>
         <module>dubbo-demo</module>
         <module>message-queue</module>
+        <module>essearch</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -54,6 +55,7 @@
         <quartz.version>2.3.0</quartz.version>
         <mybatis-plus-boot-starter.version>3.4.0</mybatis-plus-boot-starter.version>
         <mysql-connector-java.version>5.1.43</mysql-connector-java.version>
+        <es.version>7.2.0</es.version>
     </properties>
 
     <dependencies>
@@ -147,7 +149,28 @@
                 <version>${mysql-connector-java.version}</version>
                 <scope>provided</scope>
             </dependency>
+
+            <!-- es -->
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${es.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch -->
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${es.version}</version>
+            </dependency>
+            <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-client &ndash;&gt;-->
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-client</artifactId>
+                <version>${es.version}</version>
+            </dependency>
+
         </dependencies>
+
     </dependencyManagement>
 
     <build>

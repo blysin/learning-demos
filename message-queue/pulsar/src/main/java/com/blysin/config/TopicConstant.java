@@ -5,7 +5,7 @@ package com.blysin.config;
  * @date 2021/1/20
  */
 public interface TopicConstant {
-    String TOPIC_STRING = "doorOpenNotify";
+    String TOPIC_STRING = "ve-global/ve-daemon/common-message";
 
-    String TOPIC_DOMAIN = "turnOverDutyReport";
+    //String TOPIC_DOMAIN = "turnOverDutyReport";
 }

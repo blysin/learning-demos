@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
+import java.nio.channels.FileChannel;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -45,13 +46,14 @@ public class NettyServer {
     private Channel channel;
 
     /**
-     * EventLoopGroup是用来处理IO操作的多线程事件循环器，负责接收客户端连接线程
+     * EventLoopGroup事件处理器，通常需要处理客户端链接时间和io事件
+     * bossGroup负责处理客户端链接事件，一般单线程就好
      */
     private final EventLoopGroup bossGroup = new NioEventLoopGroup();
     /**
-     * 负责处理客户端i/o事件、task任务、监听任务组
+     * workerGroup负责处理io时间，线程数量可以自定义
      */
-    private final EventLoopGroup workerGroup = new NioEventLoopGroup();
+    private final EventLoopGroup workerGroup = new NioEventLoopGroup(1024);
 
     public ChannelFuture bind(InetSocketAddress address) {
         //启动 NIO 服务的辅助启动类
@@ -64,13 +66,11 @@ public class NettyServer {
         //BACKLOG用于构造服务端套接字ServerSocket对象，
         // 标识当服务器请求处理线程全满时，用于临时存放已完成三次握手的请求的队列的最大长度
         bootstrap.option(ChannelOption.SO_BACKLOG, 1024).childOption(ChannelOption.SO_KEEPALIVE, true);
-
         //是否启用心跳保活机制
         bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
         bootstrap.handler(new LoggingHandler(LogLevel.INFO));
         // 下面这行什么作用？
         //bootstrap.localAddress(address);
-
 
         ChannelFuture channelFuture = null;
         try {

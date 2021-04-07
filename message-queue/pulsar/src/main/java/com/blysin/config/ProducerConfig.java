@@ -1,6 +1,7 @@
 package com.blysin.config;
 
 import com.blysin.domain.MsgBody;
+import io.github.majusko.pulsar.constant.Serialization;
 import io.github.majusko.pulsar.producer.ProducerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,8 +18,8 @@ public class ProducerConfig {
     public ProducerFactory producerFactory(){
         return new ProducerFactory()
                 //
-                .addProducer(TopicConstant.TOPIC_DOMAIN, MsgBody.class)
+                //.addProducer(TopicConstant.TOPIC_DOMAIN, MsgBody.class)
                 //
-                .addProducer(TopicConstant.TOPIC_STRING, String.class);
+                .addProducer(TopicConstant.TOPIC_STRING, String.class, Serialization.JSON);
     }
 }

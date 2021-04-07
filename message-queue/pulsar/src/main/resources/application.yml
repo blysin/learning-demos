@@ -1,5 +1,5 @@
 server:
-  port: 11889
+  port: ${random.int(24000,25000)}
 pulsar:
   service-url: pulsar://101.37.145.159:6650
   io-threads: 10
