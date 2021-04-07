@@ -1,0 +1,36 @@
+{
+    "carcome": {
+        "aliases": {},
+        "mappings": {
+            "properties": {
+                "billId": {
+                    "type": "keyword"
+                },
+                "carNo": {
+                    "type": "text"
+                },
+                "carTime": {
+                    "type": "date"
+                },
+                "id": {
+                    "type": "long"
+                },
+                "lotCode": {
+                    "type": "keyword"
+                }
+            }
+        },
+        "settings": {
+            "index": {
+                "creation_date": "1617783809491",
+                "number_of_shards": "5",
+                "number_of_replicas": "1",
+                "uuid": "GDxcv076RByx8ZSEcx1leg",
+                "version": {
+                    "created": "7070099"
+                },
+                "provided_name": "carcome"
+            }
+        }
+    }
+}
