@@ -1,0 +1,133 @@
+#elasticsearch接口
+
+### 查看索引结构
+GET http://localhost:9200/carcome
+Content-Type: application/json
+Accept: application/json
+
+### 根据id获取文档
+GET http://localhost:9200/carcome/_doc/I1fCq3gBFPC5c3HnCHOP
+Content-Type: application/json
+Accept: application/json
+
+### 添加文档并指定id
+PUT http://localhost:9200/carcome/_doc/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "billId": "4e5IXLBA",
+  "carNo": "黑D1VCO6",
+  "carTime": 1617789323381,
+  "id": 8440,
+  "lotCode": "2007"
+}
+
+### /_cat类似与actuator，健康检测
+GET http://localhost:9200/_cat/health
+Content-Type: application/json
+Accept: application/json
+
+### 查看索引状态，数据容量及大小
+GET http://localhost:9200/_cat
+Content-Type: application/json
+Accept: application/json
+
+### 搜索
+GET http://localhost:9200/carcome/_search
+Content-Type: application/json
+Accept: application/json
+
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_all": {}
+        },
+        {
+          "match_phrase": {}
+        }
+      ],
+      "must_not": {
+        "match": {}
+      },
+      "should": {
+        "match": {}
+      },
+      "filter": {
+        "range": {
+          "balance": {
+            "gte": 20000,
+            "lte": 30000
+          }
+        }
+      }
+    },
+    "match_all": {},
+    "match_phrase": {},
+    "match": {
+      "carNo": "藏"
+    }
+  },
+  "sort": [
+    {
+      "carTime": "desc"
+    }
+  ],
+  "from": 10,
+  "size": 2
+}
+
+
+
+### 聚合搜索，all_lotCode和avarage_id是两个独立的函数，互不影响
+GET http://localhost:9200/carcome/_search
+Content-Type: application/json
+Accept: application/json
+
+{
+  "aggs": {
+    "all_lotCode": {
+      "terms": {
+        "field": "lotCode"
+      }
+    },
+    "avarage_id": {
+      "avg": {
+        "field": "id"
+      }
+    }
+  },
+  "size": 2
+}
+
+
+### 聚合搜索，all_lotCode和avarage_id有层级关系
+GET http://localhost:9200/carcome/_search
+Content-Type: application/json
+Accept: application/json
+
+{
+  "aggs": {
+    "all_lotCode": {
+      "terms": {
+        "field": "lotCode"
+      },
+      "aggs": {
+        "avarage_id": {
+          "avg": {
+            "field": "id"
+          }
+        }
+      }
+    }
+  },
+  "size": 2
+}
+
+
+
+
+
+

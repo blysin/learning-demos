@@ -18,6 +18,7 @@ import org.elasticsearch.index.query.*;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -102,14 +103,15 @@ public class EsController {
         boolBuilder.must(termQueryBuilder);
         boolBuilder.must(rangeQueryBuilder);
 
-
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
-        //分页
+        sourceBuilder.query(boolBuilder);
+
+        //分页和排序
         sourceBuilder.from(0);
         sourceBuilder.size(10);
+        sourceBuilder.sort("carTime", SortOrder.DESC);
 
         //组装提交搜索
-        sourceBuilder.query(boolBuilder);
         SearchRequest searchRequest = new SearchRequest(index);
         searchRequest.source(sourceBuilder);
         SearchResponse response = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
